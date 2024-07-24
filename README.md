@@ -1,0 +1,2 @@
+# explicapp
+aplicação para explicadores
