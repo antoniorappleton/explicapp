@@ -1,36 +1,33 @@
+// app/(tabs)/index.tsx
 import React from 'react';
-import { Image, StyleSheet, Text, View, TouchableOpacity, Platform, Dimensions } from 'react-native';
+import { Image, StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('window');
 
 export default function HomeScreen() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      {/* Background Image */}
       <Image
         source={require('@/assets/images/background-image.png')}
         style={styles.backgroundImage}
       />
-      
-      {/* Semi-transparent Gray Container */}
       <View style={styles.overlay}>
-        {/* Logo */}
         <Image
           source={require('@/assets/images/logo.png')}
           style={styles.logo}
         />
-        
-        {/* Transparent Label */}
         <View style={styles.transparentLabelContainer}>
           <Text style={styles.transparentLabelText}>Explicações Individuais</Text>
         </View>
-
-        {/* Start Button */}
-        <TouchableOpacity style={styles.button} onPress={() => alert('Começar Pressionado')}>
+        <TouchableOpacity 
+          style={styles.button} 
+          onPress={() => navigation.navigate('explore')}
+        >
           <Text style={styles.buttonText}>Começar</Text>
         </TouchableOpacity>
-
-        {/* Info Label at the Bottom */}
         <View style={styles.infoContainer}>
           <Text style={styles.infoText}>
             antonioappleton@gmail.com | António Appleton | 917 015 201
@@ -47,7 +44,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
-    backgroundColor: '#f6eeee', // Fallback background color
+    backgroundColor: '#f6eeee',
   },
   backgroundImage: {
     ...StyleSheet.absoluteFillObject,
@@ -59,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(0,0,0,0.4)', // Gray overlay with transparency
+    backgroundColor: 'rgba(0,0,0,0.4)',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 20,
@@ -68,19 +65,18 @@ const styles = StyleSheet.create({
   logo: {
     width: 220,
     height: 220,
-    marginTop: 50, // Push the logo towards the top
+    marginTop: 50,
   },
   transparentLabelContainer: {
-    backgroundColor: 'rgba(252, 252, 252, 0.31)', // Semi-transparent white
+    backgroundColor: 'rgba(252, 252, 252, 0.31)',
     padding: 10,
     borderRadius: 5,
-    width: '200%', // Make the label take the full width
-    alignItems: 'center', // Center text horizontally
-    marginVertical: 0, // Spacing between the logo and label
+    width: '150%',
+    alignItems: 'center',
+    marginVertical: 10,
   },
-
   transparentLabelText: {
-    color: '#ffffff', // Black text
+    color: '#ffffff',
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -91,7 +87,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 50,
     paddingVertical: 20,
     borderRadius: 80,
-    marginBottom: 20, // Spacing between the button and info label
+    marginBottom: 20,
   },
   buttonText: {
     color: 'rgba(118,0,0,1)',
@@ -99,12 +95,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   infoContainer: {
-    backgroundColor: 'rgba(66, 64, 64, 0.7)', // Semi-transparent background for info container
+    backgroundColor: 'rgba(244, 240, 240, 0.386)',
     padding: 15,
     borderRadius: 5,
     width: '150%',
     alignItems: 'center',
-    marginBottom: 10, // Space from the bottom of the screen
+    marginBottom: 10,
   },
   infoText: {
     color: 'white',
